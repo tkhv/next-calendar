@@ -20,9 +20,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        datanueBlue: "#1d4ed8",
+        datanueBlue: "#0070c0",
         datanueBlueActive: "#0284c7",
-        dataNueBlueDisabled: "#1d4ed8",
+        dataNueBlueDisabled: "#0c67a6",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

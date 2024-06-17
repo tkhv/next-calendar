@@ -83,7 +83,7 @@ export default function CalendarSidebar({ setEvents, setDate, date }) {
 
   return (
     <div className="space-y-6">
-      <Button className="ml-4" style={{ backgroundColor: "#1d4ed8" }}>
+      <Button className="ml-4" style={{ backgroundColor: "#0070c0" }}>
         <Plus className="w-4 h-4 mr-2" />
         Create
       </Button>

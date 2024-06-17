@@ -16,7 +16,7 @@ export default function Calendar({ events }) {
         center: "title",
         right: "today dayGridMonth,timeGridWeek,timeGridDay",
       }}
-      eventColor="#1d4ed8"
+      eventColor="#0070c0"
       events={events}
       // selectable="true"
       navLinks="true"
