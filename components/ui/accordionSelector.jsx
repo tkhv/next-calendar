@@ -9,7 +9,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 import { useState, useEffect } from "react";
 
-export default function AccordionSelector({ allEvents, setfilteredEvents }) {
+export default function AccordionSelector({
+  allEvents,
+  setfilteredEvents,
+  eventColors,
+}) {
   let jobPackages = [];
   let jobs = [];
   let workflows = [];
@@ -17,6 +21,8 @@ export default function AccordionSelector({ allEvents, setfilteredEvents }) {
   const [checkedItems, setCheckedItems] = useState({});
 
   for (let event of allEvents) {
+    event["color"] = eventColors[event.job_category];
+    event["title"] = event.job_name;
     switch (event.job_category) {
       case "job":
         jobs.push(event);

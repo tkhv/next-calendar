@@ -8,6 +8,7 @@ export default function CalendarSidebar({
   setfilteredEvents,
   date,
   setDate,
+  eventColors,
 }) {
   return (
     <div className="space-y-6">
@@ -25,6 +26,7 @@ export default function CalendarSidebar({
       />
       <div className="ml-4">
         <AccordionSelector
+          eventColors={eventColors}
           allEvents={allEvents}
           setfilteredEvents={setfilteredEvents}
         />

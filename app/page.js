@@ -39,6 +39,12 @@ export default function Home() {
     },
   ];
 
+  let defaultEventColors = {
+    job_package: "datanueBlue",
+    job: "datanueBlue",
+    workflow: "datanueBlue",
+  };
+
   return (
     <main>
       <div className="flex flex-col w-dvw">
@@ -52,6 +58,7 @@ export default function Home() {
               setfilteredEvents={setfilteredEvents}
               date={date}
               setDate={setDate}
+              eventColors={defaultEventColors}
             />
           </div>
           <div style={{ width: "80vw" }}>

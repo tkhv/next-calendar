@@ -6,7 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 
 import React, { useRef, useEffect } from "react";
 
-export default function Calendar({ events, date }) {
+export default function Calendar({ events, date, eventColors }) {
   const calendarRef = useRef(null);
 
   useEffect(() => {
@@ -21,7 +21,6 @@ export default function Calendar({ events, date }) {
   return (
     <FullCalendar
       ref={calendarRef}
-      themeSystem="bootstrap5"
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
       height={"100%"}
       initialView="dayGridMonth"
@@ -30,7 +29,6 @@ export default function Calendar({ events, date }) {
         center: "title",
         right: "today dayGridMonth,timeGridWeek,timeGridDay",
       }}
-      eventColor="#0070c0"
       events={events}
       // selectable="true"
       navLinks="true"
