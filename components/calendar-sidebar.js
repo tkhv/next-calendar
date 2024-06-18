@@ -30,6 +30,7 @@ export default function CalendarSidebar({
           eventColors={eventColors}
           allEvents={allEvents}
           setfilteredEvents={setfilteredEvents}
+          setDate={setDate}
         />
       </div>
     </div>

@@ -9,6 +9,7 @@ export default function AccordionSelector({
   allEvents,
   setfilteredEvents,
   eventColors,
+  setDate,
 }) {
   let jobPackages = [];
   let jobs = [];
@@ -54,18 +55,21 @@ export default function AccordionSelector({
         eventsList={jobPackages}
         checkedEvents={checkedEvents}
         setCheckedEvents={setCheckedEvents}
+        setDate={setDate}
       />
       <AccordionSelectorItem
         eventCategory="Jobs"
         eventsList={jobs}
         checkedEvents={checkedEvents}
         setCheckedEvents={setCheckedEvents}
+        setDate={setDate}
       />
       <AccordionSelectorItem
         eventCategory="Workflows"
         eventsList={workflows}
         checkedEvents={checkedEvents}
         setCheckedEvents={setCheckedEvents}
+        setDate={setDate}
       />
     </Accordion>
   );
