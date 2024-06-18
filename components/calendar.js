@@ -4,9 +4,23 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
-export default function Calendar({ events }) {
+import React, { useRef, useEffect } from "react";
+
+export default function Calendar({ events, date }) {
+  const calendarRef = useRef(null);
+
+  useEffect(() => {
+    console.log("calendar: " + date);
+    if (calendarRef.current) {
+      console.log("current: " + date);
+      let calendarApi = calendarRef.current.getApi();
+      calendarApi.gotoDate(date);
+    }
+  }, [date]);
+
   return (
     <FullCalendar
+      ref={calendarRef}
       themeSystem="bootstrap5"
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
       height={"100%"}
