@@ -1,4 +1,5 @@
 import AccordionSelector from "@/components/ui/accordionSelector";
+
 import { Calendar as SideCalendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
@@ -34,11 +35,3 @@ export default function CalendarSidebar({
     </div>
   );
 }
-
-/*
-
-job packages
-jobs
-workflows
-
-*/
