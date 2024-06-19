@@ -2,15 +2,14 @@
 
 import AccordionSelectorItem from "./accordionSelectorItem";
 import { Accordion } from "@/components/ui/accordion";
+import { CalendarContext } from "@/contexts/calendarContext";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
-export default function AccordionSelector({
-  allEvents,
-  setfilteredEvents,
-  eventColors,
-  setDate,
-}) {
+export default function AccordionSelector() {
+  const { setfilteredEvents, allEvents, defaultEventColors } =
+    useContext(CalendarContext);
+
   let jobPackages = [];
   let jobs = [];
   let workflows = [];
@@ -18,7 +17,7 @@ export default function AccordionSelector({
   const [checkedEvents, setCheckedEvents] = useState(new Set());
 
   for (let event of allEvents) {
-    event["color"] = eventColors[event.job_category];
+    event["color"] = defaultEventColors[event.job_category];
     event["title"] = event.job_name;
     switch (event.job_category) {
       case "job":
@@ -55,21 +54,18 @@ export default function AccordionSelector({
         eventsList={jobPackages}
         checkedEvents={checkedEvents}
         setCheckedEvents={setCheckedEvents}
-        setDate={setDate}
       />
       <AccordionSelectorItem
         eventCategory="Jobs"
         eventsList={jobs}
         checkedEvents={checkedEvents}
         setCheckedEvents={setCheckedEvents}
-        setDate={setDate}
       />
       <AccordionSelectorItem
         eventCategory="Workflows"
         eventsList={workflows}
         checkedEvents={checkedEvents}
         setCheckedEvents={setCheckedEvents}
-        setDate={setDate}
       />
     </Accordion>
   );

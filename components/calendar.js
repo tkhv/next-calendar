@@ -1,22 +1,21 @@
 "use client";
+import React, { useRef, useEffect, useContext } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import { CalendarContext } from "@/contexts/calendarContext";
 
-import React, { useRef, useEffect } from "react";
-
-export default function Calendar({ events, date, eventColors }) {
+export default function Calendar() {
+  const { setSideCalendarDate, mainCalendarDate, filteredEvents } =
+    useContext(CalendarContext);
   const calendarRef = useRef(null);
 
   useEffect(() => {
-    console.log("calendar: " + date);
     if (calendarRef.current) {
-      console.log("current: " + date);
-      let calendarApi = calendarRef.current.getApi();
-      calendarApi.gotoDate(date);
+      calendarRef.current.getApi().gotoDate(mainCalendarDate);
     }
-  }, [date]);
+  }, [mainCalendarDate]);
 
   return (
     <FullCalendar
@@ -29,12 +28,14 @@ export default function Calendar({ events, date, eventColors }) {
         center: "title",
         right: "today dayGridMonth,timeGridWeek,timeGridDay",
       }}
-      events={events}
-      // selectable="true"
+      events={filteredEvents}
       navLinks="true"
       eventClick={(info) => {
         console.log("title: " + info.event.title);
         console.log("job package: " + info.event.jobPackageName);
+      }}
+      datesSet={(dateInfo) => {
+        setSideCalendarDate(dateInfo.view.currentStart);
       }}
     />
   );

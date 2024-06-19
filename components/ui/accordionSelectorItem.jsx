@@ -15,18 +15,18 @@ import {
 } from "@/components/ui/command";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Button } from "@/components/ui/button";
+import { CalendarContext } from "@/contexts/calendarContext";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 export default function AccordionSelectorItem({
   eventCategory,
   eventsList,
   checkedEvents,
   setCheckedEvents,
-  setDate,
 }) {
-  // checkedEvents is a set of job_ids that are checked.
+  const { setSideCalendarDate, setMainCalendarDate } =
+    useContext(CalendarContext);
   const [checkedCount, setCheckedCount] = useState(eventsList.length);
 
   return (
@@ -80,7 +80,12 @@ export default function AccordionSelectorItem({
                       value={event.job_id}
                       style={{ marginRight: "1rem" }}
                     />
-                    <button onClick={() => setDate(event.start)}>
+                    <button
+                      onClick={() => {
+                        setSideCalendarDate(event.start);
+                        setMainCalendarDate(event.start);
+                      }}
+                    >
                       {event.job_name}
                     </button>
                   </CommandItem>
